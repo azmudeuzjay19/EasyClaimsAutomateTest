@@ -16,14 +16,31 @@ namespace EasyClaimsAutomateTest
         public static void ValidLogin(IWebDriver driver)
         {
 
-            //driver.FindElement(By.Id("submitBtn")).Click();
+          
+          
+            IWebElement Username =  driver.FindElement(By.XPath("//*[@id='Username']"));
+                Username.SendKeys("admin1");
+            IWebElement Password = driver.FindElement(By.XPath("//*[@id='Password']"));
+                Password.SendKeys("P@ssw0rd");
+            IWebElement Submit = driver.FindElement(By.XPath("//*[@id='submitBtn']"));
+                Submit.Click();
+            //driver.FindElements.Equals(By.XPath()).Verify();
 
-            //string submitBtn;
-            driver.FindElement(By.XPath("//*[@id='Username']")).SendKeys("admin1");
-            driver.FindElement(By.XPath("//*[@id='Password']")).SendKeys("P@ssw0rd");
-            driver.FindElement(By.XPath("//*[@id='submitBtn']")).Click();
+            IWebElement VerifyPresent = driver.FindElement(By.XPath("//*[@id='ConnectUsername']"));
+            //Console.Write(VerifyPresent.Displayed);
+            string VP = VerifyPresent.Displayed.ToString();
+            //VerifyPresent.Displayed VP = new VerifyPresent.Displayed;
 
-            //Console.Write("Success");
+            if (VP == "True")
+            {
+                Console.Write("Log In: PASSED");
+            }
+            else
+            {
+                Console.Write("Log In: Failed");
+
+            }
+            
             //driver.Close();
         }
        

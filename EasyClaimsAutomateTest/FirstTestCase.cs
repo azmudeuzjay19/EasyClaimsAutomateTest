@@ -28,12 +28,11 @@ namespace EasyClaimsAutomateTest
         {
         driver.Url = "http://192.168.8.9:82/offline";
         string Url = driver.Url;
-        //Console.Write(Url);
         Console.Write("URL of the page is " + Url + " \r\n");
 
              if (Url == "http://192.168.8.9:82/offline/Account/Login?ReturnUrl=%2Foffline%2F")
             {
-                Console.Write("Open Browser: Success! \r\n");
+                Console.Write("Open Browser: PASSED! \r\n");
             }
             else
             {
@@ -45,13 +44,14 @@ namespace EasyClaimsAutomateTest
         [Test]
         public void ExecuteTest()
         {
+            //log in 
             LogIn.ValidLogin(driver);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            //driver.Close();
+            driver.Close();
         }
     }
 }
