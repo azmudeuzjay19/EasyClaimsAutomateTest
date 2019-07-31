@@ -3,44 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace EasyClaimsAutomateTest
 {
-    class FirstTestCase
-         
-        
+    class FirstTestCase 
     {
+
+        IWebDriver driver = new ChromeDriver();
         static void Main(string[] args)
         {
-            
-            //open browser and open 192.168.8.9:82/offline
-            //OpenBrowser.Open();
+        //IWebDriver driver = new ChromeDriver();
+        //open browser and open 192.168.8.9:82/offline
+        //OpenBrowser.Open();
 
-            LogIn.ValidLogin();
+        //Initialize();
 
-            
         }
-    }
-    //public class WDriver
-    //{
-       
-    //}
 
-    //open borwser EasyClaims
-    class OpenBrowser
-    {
-        public static void Open()
+        [SetUp]
+        public void Initialize()
         {
-        
-            IWebDriver driver = new ChromeDriver();
-            driver.Url = "http://192.168.8.9:82/offline";
-            string Url = driver.Url;
-            //Console.Write(Url);
-            Console.Write("URL of the page is " + Url + " \r\n");
+        driver.Url = "http://192.168.8.9:82/offline";
+        string Url = driver.Url;
+        //Console.Write(Url);
+        Console.Write("URL of the page is " + Url + " \r\n");
 
-            if (Url == "http://192.168.8.9:82/offline/Account/Login?ReturnUrl=%2Foffline%2F")
+             if (Url == "http://192.168.8.9:82/offline/Account/Login?ReturnUrl=%2Foffline%2F")
             {
                 Console.Write("Open Browser: Success! \r\n");
             }
@@ -48,8 +39,19 @@ namespace EasyClaimsAutomateTest
             {
                 Console.Write("Open Browser: Failed!");
             }
-            //driver.FindElement(By.XPath("//*[@id="submitBtn"]")).Click();
-            driver.FindElement(By.Id("submitBtn")).Click();
+
+        }
+
+        [Test]
+        public void ExecuteTest()
+        {
+            LogIn.ValidLogin(driver);
+        }
+
+        [TearDown]
+        public void CleanUp()
+        {
+            //driver.Close();
         }
     }
 }
