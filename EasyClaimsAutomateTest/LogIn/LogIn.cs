@@ -20,7 +20,7 @@ namespace EasyClaimsAutomateTest
             //Console.Write(Url);
             Console.Write("URL of the page is " + Url + " \r\n");
 
-            if (Url == "http://192.168.8.9:82/offline/Account/Login?ReturnUrl=%2Foffline%2F")
+            if (Url == "http://192.168.8.9:82/offline/")
             {
                 Console.Write("Open Browser: Success! \r\n");
             }
